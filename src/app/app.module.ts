@@ -17,6 +17,10 @@ import { FormsModule } from '@angular/forms';
 import { UserDropdownComponent } from './features/day_6/user-dropdown/user-dropdown.component';
 import { PostTableComponent } from './features/day_6/post-table/post-table.component';
 import { Day6TestComponent } from './features/day_6/test/test.component';
+import { Day7Module } from './features/day_8/day-7.module';
+import { DashboardComponent } from './features/day_8/dashboard/dashboard.component';
+import { ChartStatsComponent } from './features/day_8/chart-stats/chart-stats.component';
+import { AppointmentCalendarComponent } from './features/day_8/appointment-calendar/appointment-calendar.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,7 @@ import { Day6TestComponent } from './features/day_6/test/test.component';
     ProgressSpinnerModule,
     DropdownModule,
     TableModule,
+    Day7Module,
   ],
   providers: [
     {
