@@ -1,0 +1,74 @@
+<div class="card flex justify-content-center p-5">
+  <p-card
+    header="Interceptor & State Demo"
+    [style]="{ width: '40rem' }"
+    styleClass="shadow-2"
+  >
+    <div class="flex flex-column gap-3">
+      <!-- Status Indicator -->
+      <div
+        *ngIf="(state$ | async)?.isLoading"
+        class="flex align-items-center justify-content-center p-3"
+      >
+        <p-progressSpinner
+          styleClass="w-4rem h-4rem"
+          strokeWidth="8"
+        ></p-progressSpinner>
+        <span class="ml-3">Loading...</span>
+      </div>
+
+      <div class="flex gap-2 justify-content-center">
+        <p-button
+          label="Trigger Success API"
+          icon="pi pi-check"
+          severity="success"
+          (onClick)="triggerSuccess()"
+        ></p-button>
+        <p-button
+          label="Trigger 404 Error"
+          icon="pi pi-times"
+          severity="danger"
+          (onClick)="triggerError()"
+        ></p-button>
+        <p-button
+          label="Reset State"
+          icon="pi pi-refresh"
+          severity="secondary"
+          (onClick)="reset()"
+        ></p-button>
+      </div>
+
+      <!-- Result Display -->
+      <div
+        *ngIf="(state$ | async)?.data"
+        class="surface-ground p-3 border-round mt-3"
+      >
+        <h4>Data Received:</h4>
+        <pre>{{ (state$ | async)?.data | json }}</pre>
+      </div>
+
+      <!-- Error Display (from State) -->
+      <div
+        *ngIf="(state$ | async)?.error"
+        class="bg-red-100 text-red-900 p-3 border-round mt-3"
+      >
+        <h4>Global Error State:</h4>
+      </div>
+    </div>
+  </p-card>
+  <p-toast></p-toast>
+</div>
+
+<div class="card flex justify-content-center p-5">
+  <p-card
+    header="Shared State: Users & Posts"
+    [style]="{ width: '50rem' }"
+    styleClass="shadow-2"
+  >
+    <div class="flex flex-column gap-4">
+      <app-user-dropdown></app-user-dropdown>
+      <div class="border-top-1 surface-border"></div>
+      <app-post-table></app-post-table>
+    </div>
+  </p-card>
+</div>
